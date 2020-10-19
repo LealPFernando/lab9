@@ -3,6 +3,7 @@
 // We need to include the path package to get the correct file path for our html
 // ===============================================================================
 var path = require("path");
+const tableArray = require("../data/tableData");
 
 
 // ===============================================================================
@@ -16,7 +17,10 @@ module.exports = function(app) {
   // ---------------------------------------------------------------------------
 
   app.get("/tables", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/tables.html"));
+    // res.sendFile(path.join(__dirname, "../public/tables.html"));
+    res.render("tables", {
+      tables: tableArray
+    })
   });
 
   app.get("/reserve", function(req, res) {
