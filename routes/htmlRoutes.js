@@ -4,6 +4,7 @@
 // ===============================================================================
 var path = require("path");
 const tableArray = require("../data/tableData");
+const waitingArray = require("../data/waitinglistData");
 
 
 // ===============================================================================
@@ -19,16 +20,19 @@ module.exports = function(app) {
   app.get("/tables", function(req, res) {
     // res.sendFile(path.join(__dirname, "../public/tables.html"));
     res.render("tables", {
-      tables: tableArray
+      tables: tableArray,
+      wait: waitingArray
     })
   });
 
   app.get("/reserve", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/reserve.html"));
+    //res.sendFile(path.join(__dirname, "../public/reserve.html"));
+    res.render("reserve")
   });
 
   // If no matching route is found default to home
   app.get("*", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/home.html"));
+    //res.sendFile(path.join(__dirname, "../public/home.html"));
+    res.render("home")
   });
 };
